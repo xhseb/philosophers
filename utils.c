@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:47:39 by sonkang           #+#    #+#             */
-/*   Updated: 2021/08/04 11:49:01 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/09/29 22:28:34 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int	ph_init(int argc, char **argv, t_info **info, t_ph **ph)
 	}
 	else
 		(*info)->eat_c = -1;
-	if ((*info)->ph_num <= 0 || (*info)->die_t <= 0 || \
-		(*info)->eat_t <= 0 || (*info)->sleep_t <= 0)
-		return (-1);
+	if ((*info)->ph_num == 0 || (*info)->die_t == 0 || \
+		(*info)->eat_t == 0 || (*info)->sleep_t == 0)
+			return (-1);
 	(*info)->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
 		* (*info)->ph_num);
 	*ph = (t_ph *)malloc(sizeof(t_ph) * (*info)->ph_num);
