@@ -33,7 +33,7 @@ int	birth_philo(t_ph *ph, t_info **info)
 		ph[idx].id = idx + 1;
 		ph[idx].eat = 0;
 		ph[idx].die = 0;
-		check = pthread_create(&ph[idx].thrd, 0, ph_life, &ph[idx]);
+		check = pthread_create(&ph[idx].thrd, 0, ph_life, &ph[idx]); //philo당 하나의 thread 생성
 		if (check != 0)
 		{
 			free(*info);
