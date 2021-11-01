@@ -57,7 +57,7 @@ int	info_parsing(t_info **info)
 		if (check != 0)
 			return (print_error());
 	}
-	gettimeofday(&(*info)->st, NULL);
+	gettimeofday(&(*info)->st, NULL); //시간 구하는 함수
 	(*info)->st_t = (*info)->st.tv_sec * 1000 + (*info)->st.tv_usec / 1000;
 	return (0);
 }
