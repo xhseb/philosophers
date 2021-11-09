@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 11:47:39 by sonkang           #+#    #+#             */
-/*   Updated: 2021/10/30 15:28:09 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/09 21:18:14 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	doing(t_ph *ph, unsigned int num, unsigned int st)
 			return ;
 		if (st + num <= present(ph))
 			return ;
-		usleep(250);
+		usleep(250); //시간 오차가 커짐
 	}
 }
 

@@ -6,7 +6,7 @@ void	*ph_life(void *ph_info)
 
 	ph = (t_ph *)ph_info;
 	ph->last_eat = present(ph);
-	if (ph->id % 2 == 0)
+	if (ph->id % 2 == 0) //교착상태에 뻐자자 않게 비대칭성 부여
 		usleep(42);
 	while (42)
 	{
@@ -29,10 +29,10 @@ int	birth_philo(t_ph *ph, t_info **info)
 	check = 0;
 	while (++idx < (*info)->ph_num)
 	{
-		ph[idx].in = *info;
-		ph[idx].id = idx + 1;
-		ph[idx].eat = 0;
-		ph[idx].die = 0;
+		ph[idx].in = *info; //in에 기본적인 정보들 담아둠
+		ph[idx].id = idx + 1; // philo number
+		ph[idx].eat = 0; //?
+		ph[idx].die = 0; //?
 		check = pthread_create(&ph[idx].thrd, 0, ph_life, &ph[idx]); //philo당 하나의 thread 생성
 		if (check != 0)
 		{
@@ -58,7 +58,7 @@ int	info_parsing(t_info **info)
 			return (print_error());
 	}
 	gettimeofday(&(*info)->st, NULL); //시간 구하는 함수
-	(*info)->st_t = (*info)->st.tv_sec * 1000 + (*info)->st.tv_usec / 1000;
+	(*info)->st_t = (*info)->st.tv_sec * 1000 + (*info)->st.tv_usec / 1000; //?
 	return (0);
 }
 
