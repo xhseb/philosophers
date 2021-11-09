@@ -31,8 +31,8 @@ int	birth_philo(t_ph *ph, t_info **info)
 	{
 		ph[idx].in = *info; //in에 기본적인 정보들 담아둠
 		ph[idx].id = idx + 1; // philo number
-		ph[idx].eat = 0; //?
-		ph[idx].die = 0; //?
+		ph[idx].eat = 0; //먹는 횟수
+		ph[idx].die = 0; //philo가 죽었는지 확인하는 flag
 		check = pthread_create(&ph[idx].thrd, 0, ph_life, &ph[idx]); //philo당 하나의 thread 생성
 		if (check != 0)
 		{

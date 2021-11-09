@@ -40,7 +40,7 @@ int	fork_mutex(t_ph *ph)
 	if (ph_die(ph))
 	{
 		pthread_mutex_unlock(&(ph->in->fork[fork]));
-		pthread_mutex_unlock(&(ph->in->fork[ph->id - 1]));
+		pthread_mutex_unlock(&(ph->in->fork[ph->id - 1]));//mutex를 기다리다가 죽을 때
 		return (1);
 	}
 	printf("time : %u, philo%d has taken a fork\n", present(ph), ph->id);

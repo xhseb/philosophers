@@ -54,7 +54,7 @@ int	fork_mutex(t_ph *ph)
 
 int	ph_eat(t_ph *ph)
 {
-	while (ph->in->ph_num == 1)
+	if (ph->in->ph_num == 1)
 	{
 		doing(ph, ph->in->die_t, ph->last_eat);
 		if (ph_die(ph))
