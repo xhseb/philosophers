@@ -22,7 +22,9 @@ void	ft_free(t_info *info, t_ph *ph)
 		pthread_join(ph[idx].thrd,(void*)&result);
 	while (++idx < info->ph_num)
 		pthread_mutex_destroy(&info->fork[idx]);
+	pthread_mutex_unlock(&(info->ifdie));
 	pthread_mutex_destroy(&info->ifdie);
+	free(info->fork);
 	free(info);
 	free(ph);
 }
@@ -50,5 +52,5 @@ void	check_fin(t_info *info, t_ph *ph)
 void	print_eatting(t_ph *ph)
 {
 	printf("%u %d has taken a fork\n", present(ph), ph->id);
-	printf("%u %d is eating\n", present(ph), ph->id);
+	printf("%u %d is eating %d\n", present(ph), ph->id, ph->eat + 1);
 }

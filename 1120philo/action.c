@@ -19,11 +19,11 @@ int	ph_die(t_ph *ph)
 		pthread_mutex_lock(&(ph->in->ifdie));
 		if (ph->die == 1)
 		{
-			pthread_mutex_unlock(&(ph->in->ifdie));
+			//pthread_mutex_unlock(&(ph->in->ifdie));
 			return (1);
 		}
 		printf("%u %d died\n", present(ph), ph->id);
-		pthread_mutex_unlock(&(ph->in->ifdie));
+		//pthread_mutex_unlock(&(ph->in->ifdie));
 		ph->die = 1;
 		return (1);
 	}
@@ -35,7 +35,7 @@ int	ph_think(t_ph *ph)
 	pthread_mutex_lock(&(ph->in->ifdie));
 	if (ph->die == 1)
 	{
-		pthread_mutex_unlock(&(ph->in->ifdie));
+		//pthread_mutex_unlock(&(ph->in->ifdie));
 		return (1);
 	}
 	printf("%u %d is thinking\n", present(ph), ph->id);
@@ -48,7 +48,7 @@ int	ph_sleep(t_ph *ph)
 	pthread_mutex_lock(&(ph->in->ifdie));
 	if (ph->die == 1)
 	{
-		pthread_mutex_unlock(&(ph->in->ifdie));
+		//pthread_mutex_unlock(&(ph->in->ifdie));
 		return (1);
 	}
 	printf("%u %d is sleeping\n", present(ph), ph->id);
@@ -78,7 +78,7 @@ int	fork_mutex(t_ph *ph)
 	pthread_mutex_lock(&(ph->in->ifdie));
 	if (ph->die == 1)
 	{
-		pthread_mutex_unlock(&(ph->in->ifdie));
+		//pthread_mutex_unlock(&(ph->in->ifdie));
 		return (1);
 	}
 	print_eatting(ph);
