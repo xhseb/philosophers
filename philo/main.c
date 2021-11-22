@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:20:39 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/09 22:20:41 by sonkang          ###   ########.fr       */
+/*   Created: 2021/11/16 18:23:45 by sonkang           #+#    #+#             */
+/*   Updated: 2021/11/22 20:20:33 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	birth_philo(t_ph *ph, t_info **info)
 			free(ph);
 			return (print_error());
 		}
-		pthread_detach(ph[idx].thrd);
 	}
 	return (0);
 }
@@ -63,6 +62,9 @@ int	info_parsing(t_info **info)
 	int		idx;
 
 	idx = -1;
+	check = pthread_mutex_init(&(*info)->ifdie, NULL);
+	if (check != 0)
+		return (print_error());
 	while (++idx < (*info)->ph_num)
 	{
 		check = pthread_mutex_init(&(*info)->fork[idx], NULL);
@@ -74,9 +76,27 @@ int	info_parsing(t_info **info)
 	return (0);
 }
 
+int	check_argument(char **argv)
+{
+	int	idx;
+	int	jdx;
+
+	idx = 0;
+	while (argv[++idx])
+	{
+		jdx = 0;
+		while (argv[idx][jdx])
+		{
+			if (argv[idx][jdx] < '0' || argv[idx][jdx] > '9')
+				return (-1);
+			jdx++;
+		}
+	}
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	int			idx;
 	int			check;
 	t_info		*info;
 	t_ph		*ph;
@@ -90,13 +110,6 @@ int	main(int argc, char **argv)
 		return (-1);
 	if (birth_philo(ph, &info))
 		return (-1);
-	idx = -1;
-	while (1)
-	{
-		if (ph[++idx].die == 1 || check_eatcount(ph))
-			break ;
-		if (idx == info->ph_num - 1)
-			idx = -1;
-	}
+	check_fin(info, ph);
 	return (0);
 }

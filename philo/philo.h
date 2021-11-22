@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 22:21:22 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/09 22:21:26 by sonkang          ###   ########.fr       */
+/*   Created: 2021/11/16 18:23:54 by sonkang           #+#    #+#             */
+/*   Updated: 2021/11/19 23:57:12 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/time.h>
-# include "./Libft/libft.h"
 
 typedef struct s_info
 {
 	pthread_mutex_t	*fork;
+	pthread_mutex_t	ifdie;
 	int				ph_num;
 	struct timeval	st;
 	unsigned int	st_t;
@@ -47,11 +47,14 @@ typedef struct s_ph
 int				print_error(void);
 unsigned int	present(t_ph *ph);
 int				ph_die(t_ph *ph);
-void			doing(t_ph *ph, unsigned int num, unsigned int st);
+int			doing(t_ph *ph, unsigned int num, unsigned int st);
 int				ph_think(t_ph *ph);
 int				ph_sleep(t_ph *ph);
 int				ph_eat(t_ph *ph);
 int				ph_init(int argc, char **argv, t_info **info, t_ph **ph);
 int				check_eatcount(t_ph *ph);
+int				ft_atoi(const char *str);
+void			check_fin(t_info *info, t_ph *ph);
+void			print_eatting(t_ph *ph);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:23:37 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/20 00:34:55 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/22 20:21:57 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void	check_fin(t_info *info, t_ph *ph)
 void	print_eatting(t_ph *ph)
 {
 	printf("%u %d has taken a fork\n", present(ph), ph->id);
-	printf("%u %d is eating %d\n", present(ph), ph->id, ph->eat + 1);
+	printf("%u %d is eating\n", present(ph), ph->id);
 }
