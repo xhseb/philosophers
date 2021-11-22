@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:24:02 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/19 23:57:33 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/22 20:27:57 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ unsigned int	present(t_ph *ph)
 	return (now.tv_sec * 1000 + now.tv_usec / 1000 - ph->in->st_t);
 }
 
-int		doing(t_ph *ph, unsigned int num, unsigned int st)
+int	doing(t_ph *ph, unsigned int num, unsigned int st)
 {
 	unsigned int	i;
 

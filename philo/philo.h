@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:23:54 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/19 23:57:12 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/22 20:27:15 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_ph
 int				print_error(void);
 unsigned int	present(t_ph *ph);
 int				ph_die(t_ph *ph);
-int			doing(t_ph *ph, unsigned int num, unsigned int st);
+int				doing(t_ph *ph, unsigned int num, unsigned int st);
 int				ph_think(t_ph *ph);
 int				ph_sleep(t_ph *ph);
 int				ph_eat(t_ph *ph);
@@ -55,6 +55,7 @@ int				ph_init(int argc, char **argv, t_info **info, t_ph **ph);
 int				check_eatcount(t_ph *ph);
 int				ft_atoi(const char *str);
 void			check_fin(t_info *info, t_ph *ph);
-void			print_eatting(t_ph *ph);
+int				print_eatting(t_ph *ph);
+void			eatting_mutex_unlock(t_ph *ph, int fork);
 
 #endif
