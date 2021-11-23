@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:23:37 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/23 20:29:55 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/23 20:50:15 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	check_fin(t_info *info, t_ph *ph)
 	{
 		if (ph[++idx].die == 1 || check_eatcount(ph))
 		{
+			idx = -1;
+			while (++idx < info->ph_num)
+				ph[idx].die = 1;
 			ft_free(info, ph);
 			return ;
 		}

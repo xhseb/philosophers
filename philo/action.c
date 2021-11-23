@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:23:13 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/23 20:30:12 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/23 20:52:21 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ph_die(t_ph *ph)
 	if (present(ph) - ph->last_eat >= ph->in->die_t)
 	{
 		pthread_mutex_lock(&(ph->in->ifdie));
+		if (ph->die == 1)
+			return (1);
 		printf("%u %d died\n", present(ph), ph->id);
 		ph->die = 1;
 		return (1);
@@ -27,6 +29,8 @@ int	ph_die(t_ph *ph)
 int	ph_think(t_ph *ph)
 {
 	pthread_mutex_lock(&(ph->in->ifdie));
+	if (ph->die == 1)
+		return (1);
 	printf("%u %d is thinking\n", present(ph), ph->id);
 	pthread_mutex_unlock(&(ph->in->ifdie));
 	return (0);
@@ -35,6 +39,8 @@ int	ph_think(t_ph *ph)
 int	ph_sleep(t_ph *ph)
 {
 	pthread_mutex_lock(&(ph->in->ifdie));
+	if (ph->die == 1)
+		return (1);
 	printf("%u %d is sleeping\n", present(ph), ph->id);
 	pthread_mutex_unlock(&(ph->in->ifdie));
 	ph->sl_st = present(ph);
@@ -61,6 +67,8 @@ int	fork_mutex(t_ph *ph)
 		return (1);
 	}
 	pthread_mutex_lock(&(ph->in->ifdie));
+	if (ph->die == 1)
+		return (1);
 	print_eatting(ph);
 	pthread_mutex_unlock(&(ph->in->ifdie));
 	ph->eat_st = present(ph);
