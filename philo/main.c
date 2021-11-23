@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:23:45 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/22 20:20:33 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/23 20:15:29 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	birth_philo(t_ph *ph, t_info **info)
 			free(ph);
 			return (print_error());
 		}
+		pthread_detach(ph[idx].thrd);
 	}
 	return (0);
 }
@@ -101,7 +102,7 @@ int	main(int argc, char **argv)
 	t_info		*info;
 	t_ph		*ph;
 
-	if (argc != 5 && argc != 6)
+	if ((argc != 5 && argc != 6))
 		return (print_error());
 	check = ph_init(argc, argv, &info, &ph);
 	if (check == -1)

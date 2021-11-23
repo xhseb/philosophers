@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 20:59:08 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/16 20:36:35 by sonkang          ###   ########.fr       */
+/*   Created: 2021/11/16 18:23:28 by sonkang           #+#    #+#             */
+/*   Updated: 2021/11/23 20:16:32 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "./philo.h"
 
 int	ft_atoi(const char *str)
 {

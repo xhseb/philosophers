@@ -6,7 +6,7 @@
 /*   By: sonkang <sonkang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 18:24:02 by sonkang           #+#    #+#             */
-/*   Updated: 2021/11/22 20:27:57 by sonkang          ###   ########.fr       */
+/*   Updated: 2021/11/23 20:15:59 by sonkang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,19 @@ unsigned int	present(t_ph *ph)
 	return (now.tv_sec * 1000 + now.tv_usec / 1000 - ph->in->st_t);
 }
 
-int	doing(t_ph *ph, unsigned int num, unsigned int st)
+void	doing(t_ph *ph, unsigned int num, unsigned int st)
 {
 	unsigned int	i;
 
 	i = 0;
-	while (!ph_die(ph))
+	while (42)
 	{
 		if (present(ph) - ph->last_eat >= ph->in->die_t)
-			return (0);
+			return ;
 		if (st + num <= present(ph))
-			return (0);
+			return ;
 		usleep(250);
 	}
-	return (1);
 }
 
 int	ph_init(int argc, char **argv, t_info **info, t_ph **ph)
